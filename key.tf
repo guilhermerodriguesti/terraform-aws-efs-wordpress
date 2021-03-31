@@ -12,6 +12,6 @@ resource "aws_key_pair" "generated_key" {
 
 resource "local_file" "key_file" {
   content         = tls_private_key.key.private_key_pem
-  filename        = "${var.key_name}-keypair.pem"
+  filename        = "${var.key_name}.pem"
   file_permission = 0400
 }

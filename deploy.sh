@@ -7,7 +7,7 @@ echo "----------------------------------------"
 echo "Formatting terraform files"
 terraform fmt
 echo "----------------------------------------"
-#terraform init
+terraform init
 echo "----------------------------------------"
 echo "Validating terraform files"
 terraform validate
@@ -21,5 +21,3 @@ echo "----------------------------------------"
 #terraform destroy -auto-approve
 echo "Done!"
 echo "----------------------------------------"
-
-

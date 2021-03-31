@@ -2,7 +2,9 @@
 resource "aws_security_group" "sg1" {
   vpc_id = aws_default_vpc.default.id
   name   = "allow_ssh_http"
-
+  tags = {
+    Name = "${var.stack}-WEB_SG"
+  }
   lifecycle {
     create_before_destroy = true
   }
@@ -20,7 +22,7 @@ resource "aws_security_group" "sg1" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   ingress {
     from_port   = 2049
     to_port     = 2049
