@@ -1,7 +1,4 @@
 #!/bin/sh
-export AWS_ACCESS_KEY_ID="AKIA4VLBOTSYTDZ63UZB"
-export AWS_SECRET_ACCESS_KEY="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"
-export AWS_DEFAULT_REGION="us-east-1"
 
 echo "*** Deployment started"
 
