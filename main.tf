@@ -1,12 +1,12 @@
 
 resource "aws_instance" "web_ec2" {
 
-  ami                    = "ami-0742b4e673072066f" //Linux 2 AMI[Free tier eligible]
-  instance_type          = "t2.micro"
+  ami                    = var.ami_id //Linux 2 AMI[Free tier eligible]
+  instance_type          = var.instance_type
   key_name               = aws_key_pair.generated_key.key_name
   availability_zone      = var.availability_zone
   subnet_id              = aws_default_subnet.default_az1.id
-  vpc_security_group_ids = [aws_security_group.sg1.id]
+  vpc_security_group_ids = [aws_security_group.security_group.id]
 
   connection {
     type        = "ssh"
@@ -25,10 +25,8 @@ resource "aws_instance" "web_ec2" {
       "sudo yum install nfs-utils -y",
     ]
   }
-
-
   tags = {
-    name = "webserver-ec2-instance"
+    Name = var.instance_name
   }
 }
 
@@ -53,7 +51,7 @@ resource "null_resource" "update_link" {
 //Create EFS
 resource "aws_efs_file_system" "efs" {
   creation_token = "w_efs"
-  depends_on     = [aws_security_group.sg1]
+  depends_on     = [aws_security_group.security_group]
   tags = {
     Name = "Wordpress-EFS"
   }

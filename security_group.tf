@@ -1,9 +1,9 @@
 //Security group
-resource "aws_security_group" "sg1" {
+resource "aws_security_group" "security_group" {
   vpc_id = aws_default_vpc.default.id
-  name   = "allow_ssh_http"
+  name   = "LIBERA_SSH_HTTP"
   tags = {
-    Name = "${var.stack}-WEB_SG"
+    Name = "SG_${var.instance_name}"
   }
   lifecycle {
     create_before_destroy = true

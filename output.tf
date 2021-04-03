@@ -1,16 +1,16 @@
 //Output values
-output "vpc_" {
+output "aws_default_vpc" {
   value = aws_default_vpc.default.id
 }
-output "subnet_" {
+output "aws_default_subnet" {
   value = aws_default_subnet.default_az1.id
 }
-output "publicip_" {
+output "web_ec2_public_ip" {
   value = aws_instance.web_ec2.public_ip
 }
-output "ec2_" {
+output "id_web_ec2" {
   value = aws_instance.web_ec2.id
 }
-output "domainname_" {
+output "domainname" {
   value = aws_s3_bucket.bucket1.bucket_domain_name
 }

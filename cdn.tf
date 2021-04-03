@@ -1,6 +1,6 @@
 //S3 bucket
 resource "aws_s3_bucket" "bucket1" {
-  bucket        = "task22akwp-myimage"
+  bucket        = var.access_key
   acl           = "public-read"
   force_destroy = true
 }
@@ -12,7 +12,7 @@ resource "null_resource" "git_download" {
 
   provisioner "local-exec" {
     when    = destroy
-    command = "rmdir  login /s /q" //rm -rf login --> for linuxos  2>nul
+    command = "rm -rf login" //rmdir  login /s /q --> for otheros  2>nul
   }
 
 }
